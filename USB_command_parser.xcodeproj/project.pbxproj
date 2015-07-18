@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D578ADB1B5ACE530085CCAD /* serial.c in Sources */ = {isa = PBXBuildFile; fileRef = 1D578AD91B5ACE530085CCAD /* serial.c */; };
 		1DD821531B0515EF001E62BC /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 1DD821521B0515EF001E62BC /* main.c */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +24,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1D578AD91B5ACE530085CCAD /* serial.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = serial.c; sourceTree = "<group>"; };
+		1D578ADA1B5ACE530085CCAD /* serial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = serial.h; sourceTree = "<group>"; };
 		1DD8214F1B0515EF001E62BC /* USB_command_parser */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = USB_command_parser; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DD821521B0515EF001E62BC /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,6 +61,8 @@
 			isa = PBXGroup;
 			children = (
 				1DD821521B0515EF001E62BC /* main.c */,
+				1D578AD91B5ACE530085CCAD /* serial.c */,
+				1D578ADA1B5ACE530085CCAD /* serial.h */,
 			);
 			path = USB_command_parser;
 			sourceTree = "<group>";
@@ -119,6 +124,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DD821531B0515EF001E62BC /* main.c in Sources */,
+				1D578ADB1B5ACE530085CCAD /* serial.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,6 +241,7 @@
 				1DD821581B0515EF001E62BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
