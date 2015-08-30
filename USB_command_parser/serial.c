@@ -13,7 +13,15 @@
 #include <string.h>
 #include <fcntl.h>
 
-
+/**
+ *  <#Description#>
+ *
+ *  @param fd     file descriptor
+ *  @param speed  baud rate
+ *  @param parity enable or disable parity bit
+ *
+ *  @return <#return value description#>
+ */
 int set_interface_attribs (int fd, int speed, int parity)
 {
     struct termios tty;
@@ -57,17 +65,11 @@ int set_interface_attribs (int fd, int speed, int parity)
 
 
 
-/*! \brief set the blocking type
+/**
+ *  Set's the blocking type of reading and writing
  *
- *  @p fd is the file which is open
- *  @p should_block
- *
- *  A read() is satisfied when either VMIN characters have been transferred to the caller's buffer, or when VTIME tenths expire between characters. Since this timer is not started until
- *  the first character arrives, this call can block indefinitely if the serial line is idle. This is the most common mode of operation, and we consider VTIME to be an intercharacter
- *  timeout, not an overall one. This call should never return zero bytes read.
- *
- *
- *  @return void
+ *  @param fd           file descriptor
+ *  @param should_block if blocking then set 1
  */
 void set_blocking (int fd, int should_block)
 {
