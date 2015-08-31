@@ -17,14 +17,10 @@
 
 int main(void)  
 {
-            char rx_buffer[100]={0,0,0,0x55,1,0,0,1,1,1,1,0,1,0,1,0,1,1,' ',1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,' ','e','n','y','i','k','e', };
-                                     //start|   id                       |  | message
-    uint32_t id=0;
-    uint64_t message=0;
+  
     
-    sscanf(rx_buffer+4,"%u %llu",&id,&message);
     
-    printf("id:%d message:%llu\n",id,message );
+    
     
     return 0;
 
