@@ -64,10 +64,10 @@
 			isa = PBXGroup;
 			children = (
 				1DD821521B0515EF001E62BC /* main.c */,
-				1D578AD91B5ACE530085CCAD /* serial.c */,
 				1DDADCD11B936EE3001C1A91 /* commands.c */,
 				1DDADCD21B936EE3001C1A91 /* commands.h */,
 				1D578ADA1B5ACE530085CCAD /* serial.h */,
+				1D578AD91B5ACE530085CCAD /* serial.c */,
 			);
 			path = USB_command_parser;
 			sourceTree = "<group>";
@@ -217,6 +217,7 @@
 		1DD821571B0515EF001E62BC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -224,6 +225,7 @@
 		1DD821581B0515EF001E62BC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

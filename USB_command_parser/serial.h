@@ -11,7 +11,7 @@
 
 #include <stdio.h>
 
-#define buffer_size 100
+
 
 
 int set_interface_attribs (int, int, int );
