@@ -12,19 +12,16 @@
 #include <stdio.h>
 #include <inttypes.h>
 
-#define buffer_size     100
+#define buffer_size     128
 #define message_size    128
 
 
-enum message_modes{
-
-    handshake=  0x01,
-    request=    0x02,
-    data=       0x03,
-    acknowledge=0x04,
-};
-
-
+#define   start_of_frame    0x55
+#define   handshake         0x01
+#define   request           0x02
+#define   data              0x03
+#define   acknowledge       0x04
+#define   end_of_frame      '\n'
 
 
 /*!
@@ -59,13 +56,39 @@ struct can_message{
  *  @function parse
  *  @abstract This function is to parse the recived bytes.
  *  @param buffer holds the recived bytes. It is an unsigned char array.
- *  @discussion Every message start with message_type filed. This tells the recievert which kind of message have to parse. Function will
+ *  @discussion Every message start with star of frame character. Then a message_type character. This tells the recievert which kind of message have to parse. After that type character there is a data field and then end of frame character. Function will
  *  search for it and if it finds the function will parse it will parse the frame in to the message structure
  *
- *  @var is_valid_message it is set if there is valid can frame and return with this variable
- *  @var i is an index variable
- *  @return 1 if it find a valid frame and 0 if not
+ *  @var is_valid_message set 1 if there was a message 0 if not. This is also the return value
+ *  @var message_queue_index index variable for the message queue
+ *  @var sof_index holds the value where was the last start of frame character
+ *  @var eof_index holds the value where was the last end of frame character
+ *
+ * @return 1 if it find a valid frame and 0 if not
  */
-uint32_t parse(unsigned char *buffer);
+uint32_t parse(uint8_t *buffer, uint8_t *message_queue_ptr);
+
+/*!
+ *  @brief  This functiion send messages on the desired communication protocol
+ *
+ *  @param buffer points to the sendable structure
+ *  @param fd file descriptor.
+ *  @param type which type of message will be send
+ *
+ *  @return the type of the message
+ */
+uint32_t send_message(uint32_t fd, uint32_t type, uint8_t *buffer);
 
 #endif /* defined(__USB_command_parser__commands__) */
+
+
+
+
+
+
+
+
+
+
+
+
