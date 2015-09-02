@@ -17,7 +17,7 @@ uint32_t parse(uint8_t *buffer, uint8_t *message_queue_ptr)
     uint32_t eof_index=0;
     
     for(sof_index=0; sof_index<buffer_size;sof_index++ )                                        /* iterating through the buffer                                                         */
-    {
+    {//
         if (buffer[sof_index]==start_of_frame)                                                  /* looking for start of frame character                                                 */
         {
             for(eof_index=sof_index; eof_index<buffer_size;eof_index++ )                        /* iterating through the buffer                                                         */
