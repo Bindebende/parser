@@ -53,7 +53,7 @@ uint32_t parse(uint8_t *buffer, uint8_t *message_queue_ptr)
                             message_queue_index++;
                             message_queue_index&= 127;
                             printf("shake\n\r");
-                            break;
+                            break;//
                     }
                     break;                                                                      /* find the whole message we can brake from it and iterrating to find the next sof  */
                 }
