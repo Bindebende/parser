@@ -55,7 +55,7 @@ uint32_t parse(uint8_t *buffer, uint8_t *message_queue_ptr)
                             printf("shake\n\r");
                             break;
                     }
-                    break;                                                                          /* find the whole message we can brake from it and iterrating to find the next sof  */
+                    break;                                                                      /* find the whole message we can brake from it and iterrating to find the next sof  */
                 }
                 
             }
@@ -66,8 +66,17 @@ uint32_t parse(uint8_t *buffer, uint8_t *message_queue_ptr)
     return is_valid_message;
 }
 
-uint32_t send_message(uint32_t fd, uint32_t type, uint8_t *buffer)
+uint32_t send_message(uint32_t fd, uint32_t type, uint8_t *buffer,uint32_t *message_queue)
 {
+    uint32_t i;
+    
+    for(i=0;i<buffer_size;i++)
+    {
+    
+        
+        
+    }
+
     
     
     

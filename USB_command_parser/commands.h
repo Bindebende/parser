@@ -74,10 +74,11 @@ uint32_t parse(uint8_t *buffer, uint8_t *message_queue_ptr);
  *  @param buffer points to the sendable structure
  *  @param fd file descriptor.
  *  @param type which type of message will be send
+ *  @param message_queue points to the message queue array
  *
  *  @return the type of the message
  */
-uint32_t send_message(uint32_t fd, uint32_t type, uint8_t *buffer);
+uint32_t send_message(uint32_t fd, uint32_t type, uint8_t *buffer,uint32_t *message_queue);
 
 #endif /* defined(__USB_command_parser__commands__) */
 
