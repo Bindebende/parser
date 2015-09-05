@@ -84,3 +84,16 @@ uint32_t send_message(uint32_t fd, uint32_t type, uint8_t *buffer,uint32_t *mess
     
     return 0;
 }
+
+
+
+void flush_buffer(uint8_t *buffer )
+{
+    int32_t strln=0;
+    uint8_t *old_buffer=buffer;
+
+    for(;*old_buffer!='\0'; old_buffer++);
+
+    for(strln=(old_buffer-buffer);strln>=0;strln--)
+        buffer[strln]=0;
+}
