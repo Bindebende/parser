@@ -126,5 +126,15 @@ uint32_t buffer_writing(uint8_t *buffer)
     return  buffer_index;
 }
 
+void init_message_structs(struct command_message *ptr)
+{
+    struct command_message blank;                           /* declare a blank structure which will be the pattern  */
+    uint32_t i=0;
+    
+    blank.message_type=0;                                   /* the two elements of the structure will be equal to zero   */
+    for(;i<message_size;i++) blank.message_data[i]=0;
 
+    for(i=0;i<10;i++) *(ptr+i)=blank;                       /* copy the pettern structure to the array which n number of structure in it  */
+    
+}
 

@@ -110,6 +110,10 @@ uint32_t buffer_writing(uint8_t *buffer);
 
 void handshake_mode(uint32_t fd,uint8_t *buffer);
 
+
+void init_message_structs(struct command_message *ptr);
+
+
 #endif /* defined(__USB_command_parser__commands__) */
 
 

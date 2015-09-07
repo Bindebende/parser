@@ -21,6 +21,11 @@
 int main(void)  
 {
    
+    
+    struct command_message messages[10];
+    
+    init_message_structs(messages);
+    
     printf("command parser alive\n\r");
     uint32_t i=0;
     uint8_t buffer[buffer_size]={
