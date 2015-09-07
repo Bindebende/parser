@@ -63,6 +63,8 @@ uint32_t parse(uint8_t *buffer, uint8_t *message_queue_ptr)
         }
         
     }
+    
+    if(is_valid_message)flush_buffer(buffer);
     return is_valid_message;
 }
 
@@ -97,3 +99,32 @@ void flush_buffer(uint8_t *buffer )
     for(strln=(old_buffer-buffer);strln>=0;strln--)
         buffer[strln]=0;
 }
+
+void handshake_mode(uint32_t fd,uint8_t *buffer)
+{
+    // check if there is a recived handshake frame
+    
+    //if not send and sleep in an infinite loop
+
+    
+    
+    
+    
+    
+
+}
+uint32_t buffer_writing(uint8_t *buffer)
+{
+//this function writes all the recieved datas to the buffer checks the buffer boundries 
+    
+    static uint32_t buffer_index=0;
+
+
+
+
+
+    return  buffer_index;
+}
+
+
+

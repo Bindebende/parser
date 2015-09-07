@@ -57,7 +57,7 @@ struct can_message{
  *  @abstract This function is to parse the recived bytes.
  *  @param buffer holds the recived bytes. It is an unsigned char array.
  *  @discussion Every message start with star of frame character. Then a message_type character. This tells the recievert which kind of message have to parse. After that type character there is a data field and then end of frame character. Function will
- *  search for it and if it finds the function will parse it will parse the frame in to the message structure
+ *  search for it and if it finds the function will parse it will parse the frame in to the message structure. And if there is a message it will flush the whole buffer at the end of the parse.
  *
  *  @var is_valid_message set 1 if there was a message 0 if not. This is also the return value
  *  @var message_queue_index index variable for the message queue
@@ -94,6 +94,21 @@ uint32_t send_message(uint32_t fd, uint32_t type, uint8_t *buffer,uint32_t *mess
  *
  */
 void flush_buffer(uint8_t *buffer );
+
+
+/*!
+ *  @brief  this function writes all the recieved datas to the buffer checks the buffer boundries
+ *
+ *  @param buffer points to the reciever buffer
+ *
+ *  @var buffer_index holds the value where is the last byte of message 
+ *
+ *  @return buffer_index
+ */
+uint32_t buffer_writing(uint8_t *buffer);
+
+
+void handshake_mode(uint32_t fd,uint8_t *buffer);
 
 #endif /* defined(__USB_command_parser__commands__) */
 

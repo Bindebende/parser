@@ -21,7 +21,6 @@
 int main(void)  
 {
    
-    uint8_t valami[128];
     printf("command parser alive\n\r");
     uint32_t i=0;
     uint8_t buffer[buffer_size]={
@@ -50,13 +49,7 @@ int main(void)
        printf("%d",message_queue[i]);
     
     printf("\n\r");
-    flush_buffer(buffer);
-    
-    
-    printf("queue:");
-    for(i=0;i<buffer_size;i++)
-        printf("%d",buffer[i]);
-    return 0;
+        return 0;
 
 }
 
