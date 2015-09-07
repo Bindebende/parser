@@ -152,6 +152,3 @@ void flush_mailboxes(struct mailbox *ptr)
 
 
 
-
-
-
