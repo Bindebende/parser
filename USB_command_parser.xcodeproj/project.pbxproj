@@ -10,7 +10,6 @@
 		1D578ADB1B5ACE530085CCAD /* serial.c in Sources */ = {isa = PBXBuildFile; fileRef = 1D578AD91B5ACE530085CCAD /* serial.c */; };
 		1DD821531B0515EF001E62BC /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 1DD821521B0515EF001E62BC /* main.c */; };
 		1DDADCD31B936EE3001C1A91 /* commands.c in Sources */ = {isa = PBXBuildFile; fileRef = 1DDADCD11B936EE3001C1A91 /* commands.c */; };
-		1DEDDE661B9B993600FC7C49 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 1DEDDE651B9B993600FC7C49 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -32,7 +31,6 @@
 		1DD821521B0515EF001E62BC /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		1DDADCD11B936EE3001C1A91 /* commands.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = commands.c; sourceTree = "<group>"; };
 		1DDADCD21B936EE3001C1A91 /* commands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commands.h; sourceTree = "<group>"; };
-		1DEDDE651B9B993600FC7C49 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +68,6 @@
 				1DDADCD21B936EE3001C1A91 /* commands.h */,
 				1D578ADA1B5ACE530085CCAD /* serial.h */,
 				1D578AD91B5ACE530085CCAD /* serial.c */,
-				1DEDDE651B9B993600FC7C49 /* README.md */,
 			);
 			path = USB_command_parser;
 			sourceTree = "<group>";
@@ -133,7 +130,6 @@
 			files = (
 				1DD821531B0515EF001E62BC /* main.c in Sources */,
 				1D578ADB1B5ACE530085CCAD /* serial.c in Sources */,
-				1DEDDE661B9B993600FC7C49 /* README.md in Sources */,
 				1DDADCD31B936EE3001C1A91 /* commands.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -22,9 +22,9 @@ int main(void)
 {
    
     
-    struct command_message messages[10];
+    struct mailbox rx_mailbox[number_of_mailboxes];
     
-    init_message_structs(messages);
+    flush_mailboxes(rx_mailbox);
     
     printf("command parser alive\n\r");
     uint32_t i=0;
@@ -34,24 +34,16 @@ int main(void)
         start_of_frame,request,end_of_frame,
         start_of_frame,data,end_of_frame
     };
-    
-    
-    
-    uint8_t message_queue[buffer_size];
-    
    
     
-    for(i=0;i<buffer_size;i++)
-        message_queue[i]=0;
-    
     i=0;
-   i= parse(buffer, message_queue);
+   i= parse(buffer, rx_mailbox);
     
     printf("is valid message%d\n\r",i);
     
-    printf("queue:");
-    for(i=0;i<buffer_size;i++)
-       printf("%d",message_queue[i]);
+    printf("mailboxes:");
+    for(i=0;i<number_of_mailboxes ;i++)
+       printf("%d",rx_mailbox[i]);
     
     printf("\n\r");
         return 0;

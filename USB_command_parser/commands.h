@@ -12,8 +12,9 @@
 #include <stdio.h>
 #include <inttypes.h>
 
-#define buffer_size     128
-#define message_size    128
+#define buffer_size             128
+#define message_size            128
+#define number_of_mailboxes     10
 
 
 #define   start_of_frame    0x55
@@ -30,9 +31,10 @@
  @field message_identifier id of the frame
  @field message_data holds the recived data or commands
  */
-struct command_message{
+struct mailbox{
     uint32_t message_type;
     uint8_t message_data[128];
+    uint8_t data_ptr;
 };
 
 
@@ -60,25 +62,25 @@ struct can_message{
  *  search for it and if it finds the function will parse it will parse the frame in to the message structure. And if there is a message it will flush the whole buffer at the end of the parse.
  *
  *  @var is_valid_message set 1 if there was a message 0 if not. This is also the return value
- *  @var message_queue_index index variable for the message queue
+ *  @var ptr 
  *  @var sof_index holds the value where was the last start of frame character
  *  @var eof_index holds the value where was the last end of frame character
  *
  * @return 1 if it find a valid frame and 0 if not
  */
-uint32_t parse(uint8_t *buffer, uint8_t *message_queue_ptr);
+uint32_t parse(uint8_t *buffer,struct mailbox *ptr);
 
 /*!
- *  @brief  This functiion send messages on the desired communication protocol
+ *  @brief  This functiion send mailbox on the desired communication protocol
  *
  *  @param buffer points to the sendable structure
  *  @param fd file descriptor.
  *  @param type which type of message will be send
- *  @param message_queue points to the message queue array
+ *  @param ptr
  *
  *  @return the type of the message
  */
-uint32_t send_message(uint32_t fd, uint32_t type, uint8_t *buffer,uint32_t *message_queue);
+uint32_t send_message(uint32_t fd, uint32_t type, uint8_t *buffer,struct mailbox *ptr);
 
 
 
@@ -111,7 +113,7 @@ uint32_t buffer_writing(uint8_t *buffer);
 void handshake_mode(uint32_t fd,uint8_t *buffer);
 
 
-void init_message_structs(struct command_message *ptr);
+void flush_mailboxes(struct mailbox *ptr);
 
 
 #endif /* defined(__USB_command_parser__commands__) */
