@@ -14,7 +14,7 @@
 
 #define buffer_size             128
 #define message_size            128
-#define number_of_mailboxes     10
+#define number_of_mailboxes     16
 
 
 #define   start_of_frame    0x55
@@ -30,11 +30,14 @@
  @abstract holds one recived frames
  @field message_identifier id of the frame
  @field message_data holds the recived data or commands
+ @field data_ptr points to the buffer array where starts the partcular message
+
  */
 struct mailbox{
     uint32_t message_type;
+    uint8_t ack_id;
     uint8_t message_data[128];
-    uint8_t data_ptr;
+    uint8_t *data_ptr;
 };
 
 
@@ -76,7 +79,7 @@ uint32_t parse(uint8_t *buffer,struct mailbox *ptr);
  *  @param buffer points to the sendable structure
  *  @param fd file descriptor.
  *  @param type which type of message will be send
- *  @param ptr
+ *  @param ptr points to the mailbox array
  *
  *  @return the type of the message
  */
@@ -107,7 +110,7 @@ void flush_buffer(uint8_t *buffer );
  *
  *  @return buffer_index
  */
-uint32_t buffer_writing(uint8_t *buffer);
+uint32_t buffer_writing(uint8_t *buffer,struct mailbox *ptr);
 
 
 void handshake_mode(uint32_t fd,uint8_t *buffer);

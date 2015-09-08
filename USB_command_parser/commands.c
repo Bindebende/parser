@@ -9,9 +9,10 @@
 #include "commands.h"
 #include <inttypes.h>
 
+
 uint32_t parse(uint8_t *buffer,struct mailbox *ptr)
 {
-   
+    static uint32_t mailbox_index=0;
     uint32_t is_valid_message=0;
     uint32_t sof_index=0;
     uint32_t eof_index=0;
@@ -28,20 +29,21 @@ uint32_t parse(uint8_t *buffer,struct mailbox *ptr)
                     is_valid_message=1;                                                         /* means we have a message                                                              */
                     switch(buffer[sof_index+1])                                                 /* sort the different type of mailbox                                                   */
                     {
-                        case acknowledge:
-                                                        /* if the message queue index is bigger than 127 after the equation the value will be 0 */
-                            printf("ack\n\r");
-                            
-                            
-                            break;
-                        
                         case request:
-                           
+                            ptr[mailbox_index].message_type=buffer[sof_index+1];
+                            ptr[mailbox_index].ack_id=buffer[sof_index+2];
+                            ptr[mailbox_index].data_ptr=buffer+sof_index+3;
+                            
+                            mailbox_index++;
                             printf("req\n\r");
                             break;
                         
                         case data:
-                           
+                            ptr[mailbox_index].message_type=buffer[sof_index+1];
+                            ptr[mailbox_index].ack_id=buffer[sof_index+2];
+                            ptr[mailbox_index].data_ptr=buffer+sof_index+3;
+                            
+                            mailbox_index++;
                             printf("data\n\r");
                             break;
                         
@@ -50,6 +52,8 @@ uint32_t parse(uint8_t *buffer,struct mailbox *ptr)
                             printf("shake\n\r");
                             break;
                     }
+                  
+                    mailbox_index&=(number_of_mailboxes-1);
                     break;                                                                      /* find the whole message we can brake from it and iterrating to find the next sof  */
                 }
                 
@@ -108,13 +112,28 @@ void handshake_mode(uint32_t fd,uint8_t *buffer)
     
 
 }
-uint32_t buffer_writing(uint8_t *buffer)
+uint32_t buffer_writing(uint8_t *buffer,struct mailbox *ptr )
 {
 //this function writes all the recieved datas to the buffer checks the buffer boundries 
     
     static uint32_t buffer_index=0;
-
-
+    uint32_t mailbox_index=0;
+    
+    
+    for(;mailbox_index<number_of_mailboxes;mailbox_index++){
+        
+        for(;buffer_index<buffer_size;buffer_index++){
+            buffer_index&=buffer_size-1;
+            
+            buffer[buffer_index++]=start_of_frame;
+            buffer[buffer_index++]=ptr[mailbox_index].message_type;
+            buffer[buffer_index++]=ptr[mailbox_index].ack_id;
+            //buffer[buffer_index++]=ptr[mailbox_index].stringcopyyyyyyyy!!!
+            buffer[buffer_index++]=end_of_frame;
+        }
+            
+    }
+    
 
 
 
@@ -130,11 +149,10 @@ void flush_mailboxes(struct mailbox *ptr)
     for(;i<message_size;i++)
     {
         blank.message_data[i]=0;
-        blank.data_ptr=0;
+        blank.data_ptr=NULL;
     }
     for(i=0;i<number_of_mailboxes;i++) *(ptr+i)=blank;                       /* copy the pettern structure to the array which n number of structure in it  */
 }
-
 
 
 
