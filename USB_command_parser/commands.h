@@ -26,7 +26,7 @@
 
 
 /*!
- @struct message
+ @struct mailbox
  @abstract holds one recived frames
  @field message_identifier id of the frame
  @field message_data holds the recived data or commands
@@ -37,7 +37,7 @@ struct mailbox{
     uint32_t message_type;
     uint8_t ack_id;
     uint8_t message_data[128];
-    uint8_t *data_ptr;
+    char *data_ptr;
 };
 
 
@@ -113,11 +113,11 @@ void flush_buffer(uint8_t *buffer );
 uint32_t buffer_writing(uint8_t *buffer,struct mailbox *ptr);
 
 
-void handshake_mode(uint32_t fd,uint8_t *buffer);
-
 
 void flush_mailboxes(struct mailbox *ptr);
 
+void print_mailboxes(struct mailbox *ptr);
+void copy(struct mailbox *ptr);
 
 #endif /* defined(__USB_command_parser__commands__) */
 

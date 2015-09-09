@@ -8,7 +8,7 @@
 
 #include "commands.h"
 #include <inttypes.h>
-
+#include <string.h>
 
 uint32_t parse(uint8_t *buffer,struct mailbox *ptr)
 {
@@ -27,19 +27,19 @@ uint32_t parse(uint8_t *buffer,struct mailbox *ptr)
                 if ((buffer[eof_index]==end_of_frame)&&(eof_index>sof_index))                   /* looking for end of frame character                                                   */
                 {
                     is_valid_message=1;                                                         /* means we have a message                                                              */
-                    switch(buffer[sof_index+1])                                                 /* sort the different type of mailbox                                                   */
+                    if(buffer[sof_index+1]==request)                                            /* sort the different type of mailbox                                                   */
                     {
-                        case request:
-                            ptr[mailbox_index].message_type=buffer[sof_index+1];
+                        ptr[mailbox_index].message_type=buffer[sof_index+1];
                             ptr[mailbox_index].ack_id=buffer[sof_index+2];
                             ptr[mailbox_index].data_ptr=buffer+sof_index+3;
                             
                             mailbox_index++;
                             printf("req\n\r");
-                            break;
-                        
-                        case data:
-                            ptr[mailbox_index].message_type=buffer[sof_index+1];
+                    
+                    }
+                    else                                                                        /* data frame                                                                           */
+                    {
+                        ptr[mailbox_index].message_type=buffer[sof_index+1];
                             ptr[mailbox_index].ack_id=buffer[sof_index+2];
                             ptr[mailbox_index].data_ptr=buffer+sof_index+3;
                             
@@ -47,10 +47,6 @@ uint32_t parse(uint8_t *buffer,struct mailbox *ptr)
                             printf("data\n\r");
                             break;
                         
-                        case handshake:
-                           
-                            printf("shake\n\r");
-                            break;
                     }
                   
                     mailbox_index&=(number_of_mailboxes-1);
@@ -99,19 +95,7 @@ void flush_buffer(uint8_t *buffer )
         buffer[strln]=0;
 }
 
-void handshake_mode(uint32_t fd,uint8_t *buffer)
-{
-    // check if there is a recived handshake frame
-    
-    //if not send and sleep in an infinite loop
 
-    
-    
-    
-    
-    
-
-}
 uint32_t buffer_writing(uint8_t *buffer,struct mailbox *ptr )
 {
 //this function writes all the recieved datas to the buffer checks the buffer boundries 
@@ -128,7 +112,7 @@ uint32_t buffer_writing(uint8_t *buffer,struct mailbox *ptr )
             buffer[buffer_index++]=start_of_frame;
             buffer[buffer_index++]=ptr[mailbox_index].message_type;
             buffer[buffer_index++]=ptr[mailbox_index].ack_id;
-            //buffer[buffer_index++]=ptr[mailbox_index].stringcopyyyyyyyy!!!
+            strcpy(buffer[buffer_index++],ptr[mailbox_index].data_ptr);
             buffer[buffer_index++]=end_of_frame;
         }
             
@@ -155,17 +139,49 @@ void flush_mailboxes(struct mailbox *ptr)
 }
 
 
+void print_mailboxes(struct mailbox *ptr)
+{
+    uint32_t i=0;
+    char temp[message_size ];
+    
+    for(;i<number_of_mailboxes;i++)
+    {
+        printf("mailbox%d:\n\r",i);
+        if(request==ptr[i].message_type)printf("request id:%d\r\n",ptr[i].ack_id);
+        
+        else
+        {
+            printf("data id:%d message:",ptr[i].ack_id);
+            strcpy(temp, ptr[i].data_ptr);
+            
+        }
+    
+    }
 
+    
+    
+}
 
-
-
-
-
-
-
-
-
-
+void copy(struct mailbox *ptr)
+{
+    struct mailbox test;
+    struct mailbox *pointer=&test;
+    
+    char valami[]={"valami\n"};
+    
+    pointer->data_ptr=valami;
+    char *temp=pointer->data_ptr;
+    
+   // strcpy(pointer->data_ptr, "valami");
+    
+    
+    temp=test.data_ptr;
+    
+    
+    while(!(*temp==end_of_frame))
+        printf("%c",*temp++);
+ 
+}
 
 
 

@@ -29,10 +29,10 @@ int main(void)
     printf("command parser alive\n\r");
     uint32_t i=0;
     uint8_t buffer[buffer_size]={
-        start_of_frame,handshake,end_of_frame,
-        start_of_frame,acknowledge,end_of_frame,
-        start_of_frame,request,end_of_frame,
-        start_of_frame,data,end_of_frame
+        start_of_frame,request,44,0,end_of_frame,
+        start_of_frame,request,45,0,end_of_frame,
+        start_of_frame,data,46,0,1,2,3,4,end_of_frame,
+        start_of_frame,data,47,4,3,2,1,0,end_of_frame,
     };
    
     
@@ -41,10 +41,9 @@ int main(void)
     
     printf("is valid message%d\n\r",i);
     
-    printf("mailboxes:");
-    for(i=0;i<number_of_mailboxes ;i++)
-       printf("%d",rx_mailbox[i]);
+   // print_mailboxes(rx_mailbox);
     
+    copy(rx_mailbox);
     printf("\n\r");
         return 0;
 
