@@ -31,21 +31,18 @@ uint32_t parse(uint8_t *buffer,struct mailbox *ptr)
                     {
                         ptr[mailbox_index].message_type=buffer[sof_index+1];
                             ptr[mailbox_index].ack_id=buffer[sof_index+2];
-                            ptr[mailbox_index].data_ptr=buffer+sof_index+3;
                             
-                            mailbox_index++;
-                            printf("req\n\r");
-                    
+                        ptr[mailbox_index].data_ptr=&buffer[sof_index+3];
+                        mailbox_index++;
+                        
                     }
                     else                                                                        /* data frame                                                                           */
                     {
                         ptr[mailbox_index].message_type=buffer[sof_index+1];
                             ptr[mailbox_index].ack_id=buffer[sof_index+2];
-                            ptr[mailbox_index].data_ptr=buffer+sof_index+3;
-                            
+                        ptr[mailbox_index].data_ptr=&buffer[sof_index+3];
                             mailbox_index++;
-                            printf("data\n\r");
-                            break;
+                           
                         
                     }
                   
@@ -74,15 +71,8 @@ uint32_t send_message(uint32_t fd, uint32_t type, uint8_t *buffer,struct mailbox
         
     }
 
-    
-    
-    
-    
-    
     return 0;
 }
-
-
 
 void flush_buffer(uint8_t *buffer )
 {
@@ -96,13 +86,57 @@ void flush_buffer(uint8_t *buffer )
 }
 
 
+
+void flush_mailboxes(struct mailbox *ptr)
+{
+    struct mailbox blank;                                                   /* declare a blank structure which will be the pattern  */
+    uint32_t i=0;
+    
+    blank.message_type=0;                                                   /* the two elements of the structure will be equal to zero   */
+    
+        
+        blank.data_ptr="uzenet";
+    
+    for(i=0;i<number_of_mailboxes;i++) *(ptr+i)=blank;                       /* copy the pattern structure to the array which n number of structure in it  */
+}
+
+
+void print_mailboxes(struct mailbox *ptr)
+{
+    uint32_t i=0;
+    
+    for(;i<number_of_mailboxes;i++)
+    {
+       if(ptr[i].message_type!=0)   // only prints the mailboxes which holds a message
+       {
+           
+           printf("mailbox%d:\n\r",i);
+           if(request==ptr[i].message_type)printf("request id:%d\r\n",ptr[i].ack_id);
+           
+            else
+            {
+                printf("data id:%d message:",ptr[i].ack_id);
+                char *temp=ptr[i].data_ptr;
+                
+                while(!(*temp==end_of_frame))
+                printf("%c",*temp++);
+                
+               
+            }
+        printf("\n\r");
+       }
+
+    }
+    
+}
+
+
 uint32_t buffer_writing(uint8_t *buffer,struct mailbox *ptr )
 {
-//this function writes all the recieved datas to the buffer checks the buffer boundries 
+    //this function writes all the recieved datas to the buffer checks the buffer boundries
     
     static uint32_t buffer_index=0;
     uint32_t mailbox_index=0;
-    
     
     for(;mailbox_index<number_of_mailboxes;mailbox_index++){
         
@@ -112,77 +146,12 @@ uint32_t buffer_writing(uint8_t *buffer,struct mailbox *ptr )
             buffer[buffer_index++]=start_of_frame;
             buffer[buffer_index++]=ptr[mailbox_index].message_type;
             buffer[buffer_index++]=ptr[mailbox_index].ack_id;
-            strcpy(buffer[buffer_index++],ptr[mailbox_index].data_ptr);
+//            strcpy(buffer[buffer_index++],ptr[mailbox_index].data_ptr);
             buffer[buffer_index++]=end_of_frame;
         }
-            
+        
     }
-    
-
-
-
     return  buffer_index;
 }
-
-void flush_mailboxes(struct mailbox *ptr)
-{
-    struct mailbox blank;                                                   /* declare a blank structure which will be the pattern  */
-    uint32_t i=0;
-    
-    blank.message_type=0;                                                   /* the two elements of the structure will be equal to zero   */
-    for(;i<message_size;i++)
-    {
-        blank.message_data[i]=0;
-        blank.data_ptr=NULL;
-    }
-    for(i=0;i<number_of_mailboxes;i++) *(ptr+i)=blank;                       /* copy the pettern structure to the array which n number of structure in it  */
-}
-
-
-void print_mailboxes(struct mailbox *ptr)
-{
-    uint32_t i=0;
-    char temp[message_size ];
-    
-    for(;i<number_of_mailboxes;i++)
-    {
-        printf("mailbox%d:\n\r",i);
-        if(request==ptr[i].message_type)printf("request id:%d\r\n",ptr[i].ack_id);
-        
-        else
-        {
-            printf("data id:%d message:",ptr[i].ack_id);
-            strcpy(temp, ptr[i].data_ptr);
-            
-        }
-    
-    }
-
-    
-    
-}
-
-void copy(struct mailbox *ptr)
-{
-    struct mailbox test;
-    struct mailbox *pointer=&test;
-    
-    char valami[]={"valami\n"};
-    
-    pointer->data_ptr=valami;
-    char *temp=pointer->data_ptr;
-    
-   // strcpy(pointer->data_ptr, "valami");
-    
-    
-    temp=test.data_ptr;
-    
-    
-    while(!(*temp==end_of_frame))
-        printf("%c",*temp++);
- 
-}
-
-
 
 

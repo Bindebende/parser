@@ -29,14 +29,12 @@
  @struct mailbox
  @abstract holds one recived frames
  @field message_identifier id of the frame
- @field message_data holds the recived data or commands
- @field data_ptr points to the buffer array where starts the partcular message
+@field data_ptr points to the buffer array where starts the partcular message
 
  */
 struct mailbox{
     uint32_t message_type;
     uint8_t ack_id;
-    uint8_t message_data[128];
     char *data_ptr;
 };
 
@@ -117,7 +115,7 @@ uint32_t buffer_writing(uint8_t *buffer,struct mailbox *ptr);
 void flush_mailboxes(struct mailbox *ptr);
 
 void print_mailboxes(struct mailbox *ptr);
-void copy(struct mailbox *ptr);
+
 
 #endif /* defined(__USB_command_parser__commands__) */
 
