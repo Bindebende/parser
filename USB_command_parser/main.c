@@ -28,7 +28,7 @@ int main(void)
     
     printf("command parser alive\n\r");
     uint32_t i=0;
-    uint8_t buffer[buffer_size]={
+    uint8_t rxbuffer[buffer_size]={
         start_of_frame,request,44,0,'\0',end_of_frame,
         start_of_frame,request,45,0,'\0',end_of_frame,
         start_of_frame,data,47,'5','1','2','3','4','\0',end_of_frame,
@@ -36,16 +36,22 @@ int main(void)
         start_of_frame,data,48,'3','2','1','\0',end_of_frame,
     };
    
+    uint8_t txbuffer[buffer_size];
+    flush_buffer(txbuffer);
     
     i=0;
-   i= parse(buffer, rx_mailbox);
+   i= parse(rxbuffer, rx_mailbox);
     
     printf("is valid message%d\n\r",i);
     
+   
+    
     print_mailboxes(rx_mailbox);
     
-    copy(rx_mailbox);
-    print_mailboxes(rx_mailbox);
+    buffer_writing(txbuffer, rx_mailbox);
+    
+   // printf("txbuffer:\n\r");
+   // for(i=0;i<buffer_size;i++) printf("%d\n\r",txbuffer[i]);
     
     printf("\n\r");
         return 0;

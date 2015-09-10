@@ -137,16 +137,24 @@ uint32_t buffer_writing(uint8_t *buffer,struct mailbox *ptr )
     
     static uint32_t buffer_index=0;
     uint32_t mailbox_index=0;
+    char *pointer_data=0;
     
-    for(;mailbox_index<number_of_mailboxes;mailbox_index++){
-        
-        for(;buffer_index<buffer_size;buffer_index++){
+   
+    for(;mailbox_index<number_of_mailboxes;mailbox_index++)
+    {
+        if(ptr[mailbox_index].message_type!=0)
+        {
             buffer_index&=buffer_size-1;
             
             buffer[buffer_index++]=start_of_frame;
             buffer[buffer_index++]=ptr[mailbox_index].message_type;
             buffer[buffer_index++]=ptr[mailbox_index].ack_id;
-//            strcpy(buffer[buffer_index++],ptr[mailbox_index].data_ptr);
+            pointer_data=ptr[mailbox_index].data_ptr;
+            
+            while(*pointer_data)
+                buffer[buffer_index++]=*pointer_data++;
+            
+            buffer[buffer_index++]='\0';
             buffer[buffer_index++]=end_of_frame;
         }
         
