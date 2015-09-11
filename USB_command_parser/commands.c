@@ -127,39 +127,96 @@ uint32_t buffer_writing(uint8_t *buffer,struct mailbox *ptr )
     return  buffer_index;
 }
 
-void request_execute(struct mailbox *ptr)
+void request_execute(struct mailbox *rx,struct mailbox *tx)
 {
     uint32_t mailbox_index=0;
+    uint32_t tx_mailbox_index=0;
+    
+    char *test_msg="test";
     
     for(;mailbox_index<number_of_mailboxes;mailbox_index++)
     {
-       if(ptr[mailbox_index].message_type==request)
+       if(rx[mailbox_index].message_type==request)
        {
-           switch(ptr[mailbox_index].ack_id)
+           switch(rx[mailbox_index].ack_id)
            {
-                case request_id_time:break;
-                case request_id_date:printf("succes\n\r");break;
-                case request_id_acc:break;
-                case request_id_mag:break;
-                case request_id_gyro:break;
-                case request_id_heading:break;
-                case request_id_temp:break;
-                case request_id_coordinates:break;
-                case request_id_altitude:printf("succes\n\r");break;
-                case request_id_set_gpio:break;
-                case request_id_obd:break;
-                case request_id_CAN_filter:break;
-           
-           
+                case request_id_time:
+                   tx[tx_mailbox_index].message_type=data;
+                   tx[tx_mailbox_index].ack_id=request_id_time;
+                   //add the time here
+                   tx[mailbox_index].data_ptr=test_msg;
+                   
+                   break;
+                case request_id_date:
+                   tx[tx_mailbox_index].message_type=data;
+                   tx[tx_mailbox_index].ack_id=request_id_date;
+                    tx[mailbox_index].data_ptr=test_msg;
+                   break;
+                case request_id_acc:
+                   tx[tx_mailbox_index].message_type=data;
+                   tx[tx_mailbox_index].ack_id=request_id_acc;
+                   tx[mailbox_index].data_ptr=test_msg;
+                   break;
+                
+               case request_id_mag:
+                   tx[tx_mailbox_index].message_type=data;
+                   tx[tx_mailbox_index].ack_id=request_id_mag;
+                   tx[mailbox_index].data_ptr=test_msg;
+                   break;
+               
+               case request_id_gyro:
+                   tx[tx_mailbox_index].message_type=data;
+                   tx[tx_mailbox_index].ack_id=request_id_gyro;
+                   tx[mailbox_index].data_ptr=test_msg;
+                   break;
+                   
+                case request_id_heading:
+                   tx[tx_mailbox_index].message_type=data;
+                   tx[tx_mailbox_index].ack_id=request_id_heading;
+                   tx[mailbox_index].data_ptr=test_msg;
+                   break;
+                   
+                case request_id_temp:
+                   tx[tx_mailbox_index].message_type=data;
+                   tx[tx_mailbox_index].ack_id=request_id_temp;
+                   tx[mailbox_index].data_ptr=test_msg;
+                   break;
+                   
+                case request_id_coordinates:
+                   tx[tx_mailbox_index].message_type=data;
+                   tx[tx_mailbox_index].ack_id=request_id_coordinates;
+                   tx[mailbox_index].data_ptr=test_msg;
+                   break;
+                   
+                case request_id_altitude:
+                   tx[tx_mailbox_index].message_type=data;
+                   tx[tx_mailbox_index].ack_id=request_id_time;
+                
+                    tx[mailbox_index].data_ptr=test_msg;
+                   break;
+                   
+                case request_id_set_gpio:
+                   tx[tx_mailbox_index].message_type=data;
+                   tx[tx_mailbox_index].ack_id=request_id_set_gpio;
+                   tx[mailbox_index].data_ptr=test_msg;
+                   break;
+                   
+                case request_id_obd:
+                   tx[tx_mailbox_index].message_type=data;
+                   tx[tx_mailbox_index].ack_id=request_id_obd;
+                   tx[mailbox_index].data_ptr=test_msg;
+                   break;
+                   
+                case request_id_CAN_filter:
+                   tx[tx_mailbox_index].message_type=data;
+                   tx[tx_mailbox_index].ack_id=request_id_CAN_filter;
+                   tx[mailbox_index].data_ptr=test_msg;
+                   break;
            }
+           tx_mailbox_index++;
        }
-    
     }
-    
-
 }
-
-
 
 void print_mailboxes(struct mailbox *ptr)
 {

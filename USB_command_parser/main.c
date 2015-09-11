@@ -22,9 +22,11 @@ int main(void)
 {
    
     
-    struct mailbox rx_mailbox[number_of_mailboxes];
+    struct mailbox rx_mailbox[number_of_mailboxes],tx_mailbox[number_of_mailboxes];
     
     flush_mailboxes(rx_mailbox);
+    flush_mailboxes(tx_mailbox);
+    
     
     printf("command parser alive\n\r");
     uint32_t i=0;
@@ -44,15 +46,13 @@ int main(void)
     
     printf("is valid message%d\n\r",i);
     
-    request_execute(rx_mailbox);
+    request_execute(rx_mailbox,tx_mailbox);
     
     print_mailboxes(rx_mailbox);
     
-    buffer_writing(txbuffer, rx_mailbox);
+    buffer_writing(txbuffer, tx_mailbox);
     
-   // printf("txbuffer:\n\r");
-   // for(i=0;i<buffer_size;i++) printf("%d\n\r",txbuffer[i]);
-    
+    for(i; i<buffer_size;i++)printf("tx:%c\n\r",txbuffer[i]);
     printf("\n\r");
         return 0;
 

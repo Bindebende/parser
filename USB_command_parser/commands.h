@@ -143,8 +143,13 @@ void flush_mailboxes(struct mailbox *ptr);
  */
 void print_mailboxes(struct mailbox *ptr);
 
-
-void request_execute(struct mailbox *ptr);
+/*!
+ *  @brief  execute what was the request and uploads the transmitt mailboxes.
+ *
+ *  @param rx  points to the array which holds the recive mailbox structures
+ *  @param tx  points to the array which holds the transmitt mailbox structures
+ */
+void request_execute(struct mailbox *rx,struct mailbox *tx );
 
 #endif /* defined(__USB_command_parser__commands__) */
 
