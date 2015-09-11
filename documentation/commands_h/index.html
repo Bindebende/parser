@@ -266,10 +266,92 @@ function disclosure_triangle(elt) {
 <hr class="afterClassOrHeaderInfo"><br><a name="HeaderDoc_functions"></a>
 <h2 class="h2tight">Functions</h2>
 <dl>
+<dt><tt><a href="index.html#//apple_ref/c/func/buffer_writing" target="_top">buffer_writing</a></tt></dt>
+<dd><p>this function writes all the recieved datas to the buffer checks the buffer boundries</dd>
+<dt><tt><a href="index.html#//apple_ref/c/func/flush_buffer" target="_top">flush_buffer</a></tt></dt>
+<dd><p>fill's the array with 0's</dd>
+<dt><tt><a href="index.html#//apple_ref/c/func/flush_mailboxes" target="_top">flush_mailboxes</a></tt></dt>
+<dd><p>uploads the structure with a blank pattern structure to give it a initial value</dd>
 <dt><tt><a href="index.html#//apple_ref/c/func/parse" target="_top">parse</a></tt></dt>
 <dd><p>This function is to parse the recived bytes.
 </dd>
+<dt><tt><a href="index.html#//apple_ref/c/func/print_mailboxes" target="_top">print_mailboxes</a></tt></dt>
+<dd><p>prints the elements of the mailboxes to the stdio</dd>
+<dt><tt><a href="index.html#//apple_ref/c/func/send_message" target="_top">send_message</a></tt></dt>
+<dd><p>This functiion send mailbox on the desired communication protocol</dd>
 </dl>
+<hr class="betweenAPIEntries"><!-- headerDoc=func;  uid=//apple_ref/c/func/buffer_writing;   name=buffer_writing -->
+<a name="//apple_ref/c/func/buffer_writing"></a>
+<h3><a name="buffer_writing">buffer_writing</a></h3>
+<hr class="afterName"><p><!-- headerDoc=abstract;uid=//apple_ref/c/func/buffer_writing;name=start --><!-- begin abstract --><p>this function writes all the recieved datas to the buffer checks the buffer boundries<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/c/func/buffer_writing;name=end --></p>
+<div class='declaration_indent'>
+<pre><!-- headerDoc=declaration;uid=//apple_ref/c/func/buffer_writing;name=start --><!-- a logicalPath="//apple_ref/c/cl/uint32_t //apple_ref/c/tdef/uint32_t //apple_ref/c/tag/uint32_t //apple_ref/c/struct/uint32_t //apple_ref/c/intf/uint32_t //apple_ref/doc/anysymbol/uint32_t" machineGenerated="true" --><span class="type">uint32_t</span><!-- /a --> <!-- a logicalPath="//apple_ref/c/instm/buffer_writing //apple_ref/c/clm/buffer_writing //apple_ref/c/intfcm/buffer_writing //apple_ref/c/intfm/buffer_writing //apple_ref/c/func/buffer_writing //apple_ref/c/ftmplt/buffer_writing //apple_ref/c/defn/buffer_writing //apple_ref/c/macro/buffer_writing //apple_ref/doc/anysymbol/buffer_writing" machineGenerated="true" --><span class="function">buffer_writing</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/c/cl/uint8_t //apple_ref/c/tdef/uint8_t //apple_ref/c/tag/uint8_t //apple_ref/c/struct/uint8_t //apple_ref/c/intf/uint8_t //apple_ref/doc/anysymbol/uint8_t" machineGenerated="true" --><span class="type">uint8_t</span><!-- /a --> <span class="type">*</span><span class="param">buffer</span>,
+    <span class="keyword">struct</span> <!-- a logicalPath="//apple_ref/c/cl/mailbox //apple_ref/c/tdef/mailbox //apple_ref/c/tag/mailbox //apple_ref/c/struct/mailbox //apple_ref/c/intf/mailbox //apple_ref/doc/anysymbol/mailbox" machineGenerated="true" --><span class="type">mailbox</span><!-- /a --> <span class="type">*</span><span class="param">ptr</span>);  <!-- headerDoc=declaration;uid=//apple_ref/c/func/buffer_writing;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<div class='param_indent'>
+<dl>
+<dt><!-- headerDoc=functionparam;  uid=//apple_ref/doc/functionparam/buffer_writing/buffer;   name=buffer -->
+<a name="//apple_ref/doc/functionparam/buffer_writing/buffer"></a>
+<code>buffer</code></dt><dd><p>points to the reciever buffer</dd>
+</dl>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5><p><!-- begin return value --><p>buffer_index
+
+<!-- end return value --></p><h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Local Variables</font></h5>
+<div class='param_indent'>
+<dl>
+<dt><a name="//apple_ref/doc/functionvar/buffer_writing/buffer_index"><code>buffer_index</code></a></dt><dd><p>holds the value where is the last byte of message</dd>
+<dt><a name="//apple_ref/doc/functionvar/buffer_writing/mailbox_index"><code>mailbox_index</code></a></dt><dd><p>index the mailbox array</dd>
+<dt><a name="//apple_ref/doc/functionvar/buffer_writing/pointer_data"><code>pointer_data</code></a></dt><dd><p>points to the structure data_ptr field</dd>
+</dl>
+</div>
+<hr class="betweenAPIEntries"><!-- headerDoc=func;  uid=//apple_ref/c/func/flush_buffer;   name=flush_buffer -->
+<a name="//apple_ref/c/func/flush_buffer"></a>
+<h3><a name="flush_buffer">flush_buffer</a></h3>
+<hr class="afterName"><p><!-- headerDoc=abstract;uid=//apple_ref/c/func/flush_buffer;name=start --><!-- begin abstract --><p>fill's the array with 0's<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/c/func/flush_buffer;name=end --></p>
+<div class='declaration_indent'>
+<pre><!-- headerDoc=declaration;uid=//apple_ref/c/func/flush_buffer;name=start --><!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/struct/void //apple_ref/c/intf/void //apple_ref/doc/anysymbol/void" machineGenerated="true" --><span class="type">void</span><!-- /a --> <!-- a logicalPath="//apple_ref/c/instm/flush_buffer //apple_ref/c/clm/flush_buffer //apple_ref/c/intfcm/flush_buffer //apple_ref/c/intfm/flush_buffer //apple_ref/c/func/flush_buffer //apple_ref/c/ftmplt/flush_buffer //apple_ref/c/defn/flush_buffer //apple_ref/c/macro/flush_buffer //apple_ref/doc/anysymbol/flush_buffer" machineGenerated="true" --><span class="function">flush_buffer</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/c/cl/uint8_t //apple_ref/c/tdef/uint8_t //apple_ref/c/tag/uint8_t //apple_ref/c/struct/uint8_t //apple_ref/c/intf/uint8_t //apple_ref/doc/anysymbol/uint8_t" machineGenerated="true" --><span class="type">uint8_t</span><!-- /a --> <span class="type">*</span><span class="param">buffer</span> );  <!-- headerDoc=declaration;uid=//apple_ref/c/func/flush_buffer;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<div class='param_indent'>
+<dl>
+<dt><!-- headerDoc=functionparam;  uid=//apple_ref/doc/functionparam/flush_buffer/buffer;   name=buffer -->
+<a name="//apple_ref/doc/functionparam/flush_buffer/buffer"></a>
+<code>buffer</code></dt><dd><p>points to the flushable array</dd>
+</dl>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Local Variables</font></h5>
+<div class='param_indent'>
+<dl>
+<dt><a name="//apple_ref/doc/functionvar/flush_buffer/strln"><code>strln</code></a></dt><dd><p>holds the number of character which is in the array and used for indexing the array</dd>
+</dl>
+</div>
+<hr class="betweenAPIEntries"><!-- headerDoc=func;  uid=//apple_ref/c/func/flush_mailboxes;   name=flush_mailboxes -->
+<a name="//apple_ref/c/func/flush_mailboxes"></a>
+<h3><a name="flush_mailboxes">flush_mailboxes</a></h3>
+<hr class="afterName"><p><!-- headerDoc=abstract;uid=//apple_ref/c/func/flush_mailboxes;name=start --><!-- begin abstract --><p>uploads the structure with a blank pattern structure to give it a initial value<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/c/func/flush_mailboxes;name=end --></p>
+<div class='declaration_indent'>
+<pre><!-- headerDoc=declaration;uid=//apple_ref/c/func/flush_mailboxes;name=start --><!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/struct/void //apple_ref/c/intf/void //apple_ref/doc/anysymbol/void" machineGenerated="true" --><span class="type">void</span><!-- /a --> <!-- a logicalPath="//apple_ref/c/instm/flush_mailboxes //apple_ref/c/clm/flush_mailboxes //apple_ref/c/intfcm/flush_mailboxes //apple_ref/c/intfm/flush_mailboxes //apple_ref/c/func/flush_mailboxes //apple_ref/c/ftmplt/flush_mailboxes //apple_ref/c/defn/flush_mailboxes //apple_ref/c/macro/flush_mailboxes //apple_ref/doc/anysymbol/flush_mailboxes" machineGenerated="true" --><span class="function">flush_mailboxes</span><!-- /a -->(
+    <span class="keyword">struct</span> <!-- a logicalPath="//apple_ref/c/cl/mailbox //apple_ref/c/tdef/mailbox //apple_ref/c/tag/mailbox //apple_ref/c/struct/mailbox //apple_ref/c/intf/mailbox //apple_ref/doc/anysymbol/mailbox" machineGenerated="true" --><span class="type">mailbox</span><!-- /a --> <span class="type">*</span><span class="param">ptr</span>);  <!-- headerDoc=declaration;uid=//apple_ref/c/func/flush_mailboxes;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<div class='param_indent'>
+<dl>
+<dt><!-- headerDoc=functionparam;  uid=//apple_ref/doc/functionparam/flush_mailboxes/ptr;   name=ptr -->
+<a name="//apple_ref/doc/functionparam/flush_mailboxes/ptr"></a>
+<code>ptr</code></dt><dd><p>points to the array which holds the mailbox structures</dd>
+</dl>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Local Variables</font></h5>
+<div class='param_indent'>
+<dl>
+<dt><a name="//apple_ref/doc/functionvar/flush_mailboxes/blank"><code>blank</code></a></dt><dd><p>a blank structure which will be the pattern</dd>
+<dt><a name="//apple_ref/doc/functionvar/flush_mailboxes/mailbox_index"><code>mailbox_index</code></a></dt><dd> </dd>
+</dl>
+</div>
 <hr class="betweenAPIEntries"><!-- headerDoc=func;  uid=//apple_ref/c/func/parse;   name=parse -->
 <a name="//apple_ref/c/func/parse"></a>
 <h3><a name="parse">parse</a></h3>
@@ -277,7 +359,8 @@ function disclosure_triangle(elt) {
 <!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/c/func/parse;name=end --></p>
 <div class='declaration_indent'>
 <pre><!-- headerDoc=declaration;uid=//apple_ref/c/func/parse;name=start --><!-- a logicalPath="//apple_ref/c/cl/uint32_t //apple_ref/c/tdef/uint32_t //apple_ref/c/tag/uint32_t //apple_ref/c/struct/uint32_t //apple_ref/c/intf/uint32_t //apple_ref/doc/anysymbol/uint32_t" machineGenerated="true" --><span class="type">uint32_t</span><!-- /a --> <!-- a logicalPath="//apple_ref/c/instm/parse //apple_ref/c/clm/parse //apple_ref/c/intfcm/parse //apple_ref/c/intfm/parse //apple_ref/c/func/parse //apple_ref/c/ftmplt/parse //apple_ref/c/defn/parse //apple_ref/c/macro/parse //apple_ref/doc/anysymbol/parse" machineGenerated="true" --><span class="function">parse</span><!-- /a -->(
-    <span class="keyword">unsigned</span> <!-- a logicalPath="//apple_ref/c/cl/char //apple_ref/c/tdef/char //apple_ref/c/tag/char //apple_ref/c/struct/char //apple_ref/c/intf/char //apple_ref/doc/anysymbol/char" machineGenerated="true" --><span class="type">char</span><!-- /a --> <span class="type">*</span><span class="param">buffer</span>);  <!-- headerDoc=declaration;uid=//apple_ref/c/func/parse;name=end --></pre>
+    <!-- a logicalPath="//apple_ref/c/cl/uint8_t //apple_ref/c/tdef/uint8_t //apple_ref/c/tag/uint8_t //apple_ref/c/struct/uint8_t //apple_ref/c/intf/uint8_t //apple_ref/doc/anysymbol/uint8_t" machineGenerated="true" --><span class="type">uint8_t</span><!-- /a --> <span class="type">*</span><span class="param">buffer</span>,
+    <span class="keyword">struct</span> <!-- a logicalPath="//apple_ref/c/cl/mailbox //apple_ref/c/tdef/mailbox //apple_ref/c/tag/mailbox //apple_ref/c/struct/mailbox //apple_ref/c/intf/mailbox //apple_ref/doc/anysymbol/mailbox" machineGenerated="true" --><span class="type">mailbox</span><!-- /a --> <span class="type">*</span><span class="param">ptr</span>);  <!-- headerDoc=declaration;uid=//apple_ref/c/func/parse;name=end --></pre>
 </div>
 <h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
 <div class='param_indent'>
@@ -290,25 +373,80 @@ function disclosure_triangle(elt) {
 <h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5><p><!-- begin return value --><p>1 if it find a valid frame and 0 if not
 
 <!-- end return value --></p><h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
-<!-- begin discussion --><!-- headerDoc=discussion;uid=//apple_ref/c/func/parse;name=start --><p>Every message start with message_type filed. This tells the recievert which kind of message have to parse. Function will
-search for it and if it finds the function will parse it will parse the frame in to the message structure
+<!-- begin discussion --><!-- headerDoc=discussion;uid=//apple_ref/c/func/parse;name=start --><p>The frame layout:
+|SOF|message_type|id|message|'\0'|EOF|
+A message_type character. This tells the recievert which kind of message have to parse. 
+id: which is the id of different messages
+message: there is a data field 
+end of frame characters:'\0'|EOF
+Function will search for it and if it finds the function will parse it will parse the frame in to the message structure. And if there is a message it will flush the whole buffer at the end of the parse.
 </p>
 <!-- headerDoc=discussion;uid=//apple_ref/c/func/parse;name=end --><!-- end discussion -->
 <h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Local Variables</font></h5>
 <div class='param_indent'>
 <dl>
-<dt><a name="//apple_ref/doc/functionvar/parse/is_valid_message"><code>is_valid_message</code></a></dt><dd><p>it is set if there is valid can frame and return with this variable</dd>
-<dt><a name="//apple_ref/doc/functionvar/parse/i"><code>i</code></a></dt><dd><p>is an index variable</dd>
+<dt><a name="//apple_ref/doc/functionvar/parse/is_valid_message"><code>is_valid_message</code></a></dt><dd><p>set 1 if there was a message 0 if not. This is also the return value</dd>
+<dt><a name="//apple_ref/doc/functionvar/parse/ptr"><code>ptr</code></a></dt><dd> </dd>
+<dt><a name="//apple_ref/doc/functionvar/parse/sof_index"><code>sof_index</code></a></dt><dd><p>holds the value where was the last start of frame character</dd>
+<dt><a name="//apple_ref/doc/functionvar/parse/eof_index"><code>eof_index</code></a></dt><dd><p>holds the value where was the last end of frame character</dd>
 </dl>
 </div>
-<hr class="betweenSections">
+<hr class="betweenAPIEntries"><!-- headerDoc=func;  uid=//apple_ref/c/func/print_mailboxes;   name=print_mailboxes -->
+<a name="//apple_ref/c/func/print_mailboxes"></a>
+<h3><a name="print_mailboxes">print_mailboxes</a></h3>
+<hr class="afterName"><p><!-- headerDoc=abstract;uid=//apple_ref/c/func/print_mailboxes;name=start --><!-- begin abstract --><p>prints the elements of the mailboxes to the stdio<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/c/func/print_mailboxes;name=end --></p>
+<div class='declaration_indent'>
+<pre><!-- headerDoc=declaration;uid=//apple_ref/c/func/print_mailboxes;name=start --><!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/struct/void //apple_ref/c/intf/void //apple_ref/doc/anysymbol/void" machineGenerated="true" --><span class="type">void</span><!-- /a --> <!-- a logicalPath="//apple_ref/c/instm/print_mailboxes //apple_ref/c/clm/print_mailboxes //apple_ref/c/intfcm/print_mailboxes //apple_ref/c/intfm/print_mailboxes //apple_ref/c/func/print_mailboxes //apple_ref/c/ftmplt/print_mailboxes //apple_ref/c/defn/print_mailboxes //apple_ref/c/macro/print_mailboxes //apple_ref/doc/anysymbol/print_mailboxes" machineGenerated="true" --><span class="function">print_mailboxes</span><!-- /a -->(
+    <span class="keyword">struct</span> <!-- a logicalPath="//apple_ref/c/cl/mailbox //apple_ref/c/tdef/mailbox //apple_ref/c/tag/mailbox //apple_ref/c/struct/mailbox //apple_ref/c/intf/mailbox //apple_ref/doc/anysymbol/mailbox" machineGenerated="true" --><span class="type">mailbox</span><!-- /a --> <span class="type">*</span><span class="param">ptr</span>);  <!-- headerDoc=declaration;uid=//apple_ref/c/func/print_mailboxes;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<div class='param_indent'>
+<dl>
+<dt><!-- headerDoc=functionparam;  uid=//apple_ref/doc/functionparam/print_mailboxes/ptr;   name=ptr -->
+<a name="//apple_ref/doc/functionparam/print_mailboxes/ptr"></a>
+<code>ptr</code></dt><dd><p>points to the array which holds the mailbox structures</dd>
+</dl>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Local Variables</font></h5>
+<div class='param_indent'>
+<dl>
+<dt><a name="//apple_ref/doc/functionvar/print_mailboxes/mailbox_index"><code>mailbox_index</code></a></dt><dd><p>used to index the array which holds the structures</dd>
+</dl>
+</div>
+<hr class="betweenAPIEntries"><!-- headerDoc=func;  uid=//apple_ref/c/func/send_message;   name=send_message -->
+<a name="//apple_ref/c/func/send_message"></a>
+<h3><a name="send_message">send_message</a></h3>
+<hr class="afterName"><p><!-- headerDoc=abstract;uid=//apple_ref/c/func/send_message;name=start --><!-- begin abstract --><p>This functiion send mailbox on the desired communication protocol<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/c/func/send_message;name=end --></p>
+<div class='declaration_indent'>
+<pre><!-- headerDoc=declaration;uid=//apple_ref/c/func/send_message;name=start --><!-- a logicalPath="//apple_ref/c/cl/uint32_t //apple_ref/c/tdef/uint32_t //apple_ref/c/tag/uint32_t //apple_ref/c/struct/uint32_t //apple_ref/c/intf/uint32_t //apple_ref/doc/anysymbol/uint32_t" machineGenerated="true" --><span class="type">uint32_t</span><!-- /a --> <!-- a logicalPath="//apple_ref/c/instm/send_message //apple_ref/c/clm/send_message //apple_ref/c/intfcm/send_message //apple_ref/c/intfm/send_message //apple_ref/c/func/send_message //apple_ref/c/ftmplt/send_message //apple_ref/c/defn/send_message //apple_ref/c/macro/send_message //apple_ref/doc/anysymbol/send_message" machineGenerated="true" --><span class="function">send_message</span><!-- /a -->(
+    <!-- a logicalPath="//apple_ref/c/cl/uint32_t //apple_ref/c/tdef/uint32_t //apple_ref/c/tag/uint32_t //apple_ref/c/struct/uint32_t //apple_ref/c/intf/uint32_t //apple_ref/doc/anysymbol/uint32_t" machineGenerated="true" --><span class="type">uint32_t</span><!-- /a --> <span class="param">fd</span>,
+    <!-- a logicalPath="//apple_ref/c/cl/uint8_t //apple_ref/c/tdef/uint8_t //apple_ref/c/tag/uint8_t //apple_ref/c/struct/uint8_t //apple_ref/c/intf/uint8_t //apple_ref/doc/anysymbol/uint8_t" machineGenerated="true" --><span class="type">uint8_t</span><!-- /a --> <span class="type">*</span><span class="param">buffer</span>,
+    <span class="keyword">struct</span> <!-- a logicalPath="//apple_ref/c/cl/mailbox //apple_ref/c/tdef/mailbox //apple_ref/c/tag/mailbox //apple_ref/c/struct/mailbox //apple_ref/c/intf/mailbox //apple_ref/doc/anysymbol/mailbox" machineGenerated="true" --><span class="type">mailbox</span><!-- /a --> <span class="type">*</span><span class="param">ptr</span>);  <!-- headerDoc=declaration;uid=//apple_ref/c/func/send_message;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<div class='param_indent'>
+<dl>
+<dt><!-- headerDoc=functionparam;  uid=//apple_ref/doc/functionparam/send_message/buffer;   name=buffer -->
+<a name="//apple_ref/doc/functionparam/send_message/buffer"></a>
+<code>buffer</code></dt><dd><p>points to the sendable structure</dd>
+<dt><!-- headerDoc=functionparam;  uid=//apple_ref/doc/functionparam/send_message/fd;   name=fd -->
+<a name="//apple_ref/doc/functionparam/send_message/fd"></a>
+<code>fd</code></dt><dd><p>file descriptor.</dd>
+<dt><!-- headerDoc=functionparam;  uid=//apple_ref/doc/functionparam/send_message/ptr;   name=ptr -->
+<a name="//apple_ref/doc/functionparam/send_message/ptr"></a>
+<code>ptr</code></dt><dd><p>points to the mailbox array</dd>
+</dl>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5><p><!-- begin return value --><p>the type of the message
+
+<!-- end return value --></p><hr class="betweenSections">
 <a name="HeaderDoc_structs"></a>
 <h2 class="h2tight">Structs&nbsp;and&nbsp;Unions</h2>
 <dl>
 <dt><tt><a href="index.html#//apple_ref/c/tag/can_message" target="_top">can_message</a></tt></dt>
 <dd><p>holds one recived can frame
 </dd>
-<dt><tt><a href="index.html#//apple_ref/c/tag/message" target="_top">message</a></tt></dt>
+<dt><tt><a href="index.html#//apple_ref/c/tag/mailbox" target="_top">mailbox</a></tt></dt>
 <dd><p>holds one recived frames
 </dd>
 </dl>
@@ -334,30 +472,31 @@ search for it and if it finds the function will parse it will parse the frame in
 <code>message</code></dt><dd><p>the message</dd>
 </dl>
 </div>
-<hr class="betweenAPIEntries"><!-- headerDoc=tag;  uid=//apple_ref/c/tag/message;   name=message -->
-<a name="//apple_ref/c/tag/message"></a>
-<h3><a name="message">message</a></h3>
-<hr class="afterName"><p><!-- headerDoc=abstract;uid=//apple_ref/c/tag/message;name=start --><!-- begin abstract --><p>holds one recived frames
-<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/c/tag/message;name=end --></p>
+<hr class="betweenAPIEntries"><!-- headerDoc=tag;  uid=//apple_ref/c/tag/mailbox;   name=mailbox -->
+<a name="//apple_ref/c/tag/mailbox"></a>
+<h3><a name="mailbox">mailbox</a></h3>
+<hr class="afterName"><p><!-- headerDoc=abstract;uid=//apple_ref/c/tag/mailbox;name=start --><!-- begin abstract --><p>holds one recived frames
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/c/tag/mailbox;name=end --></p>
 <div class='declaration_indent'>
-<pre><!-- headerDoc=declaration;uid=//apple_ref/c/tag/message;name=start --><span class="keyword">struct</span> <!-- a logicalPath="//apple_ref/c/cl/message //apple_ref/c/tdef/message //apple_ref/c/tag/message //apple_ref/c/struct/message //apple_ref/c/intf/message //apple_ref/doc/anysymbol/message" machineGenerated="true" --><span class="type">message</span><!-- /a -->{ 
+<pre><!-- headerDoc=declaration;uid=//apple_ref/c/tag/mailbox;name=start --><span class="keyword">struct</span> <!-- a logicalPath="//apple_ref/c/cl/mailbox //apple_ref/c/tdef/mailbox //apple_ref/c/tag/mailbox //apple_ref/c/struct/mailbox //apple_ref/c/intf/mailbox //apple_ref/doc/anysymbol/mailbox" machineGenerated="true" --><span class="type">mailbox</span><!-- /a -->{ 
     <!-- a logicalPath="//apple_ref/c/cl/uint32_t //apple_ref/c/tdef/uint32_t //apple_ref/c/tag/uint32_t //apple_ref/c/struct/uint32_t //apple_ref/c/intf/uint32_t //apple_ref/doc/anysymbol/uint32_t" machineGenerated="true" --><span class="type">uint32_t</span><!-- /a --> <!-- a logicalPath="//apple_ref/c/econst/message_type //apple_ref/c/data/message_type //apple_ref/c/clconst/message_type " machineGenerated="true" --><span class="var">message_type</span><!-- /a -->; 
-    <!-- a logicalPath="//apple_ref/c/cl/uint8_t //apple_ref/c/tdef/uint8_t //apple_ref/c/tag/uint8_t //apple_ref/c/struct/uint8_t //apple_ref/c/intf/uint8_t //apple_ref/doc/anysymbol/uint8_t" machineGenerated="true" --><span class="type">uint8_t</span><!-- /a --> <!-- a logicalPath="//apple_ref/c/cl/message_data //apple_ref/c/tdef/message_data //apple_ref/c/tag/message_data //apple_ref/c/struct/message_data //apple_ref/c/intf/message_data //apple_ref/doc/anysymbol/message_data" machineGenerated="true" --><span class="type">message_data</span><!-- /a -->[<span class="number">150</span>]; 
-};  <!-- headerDoc=declaration;uid=//apple_ref/c/tag/message;name=end --></pre>
+    <!-- a logicalPath="//apple_ref/c/cl/uint8_t //apple_ref/c/tdef/uint8_t //apple_ref/c/tag/uint8_t //apple_ref/c/struct/uint8_t //apple_ref/c/intf/uint8_t //apple_ref/doc/anysymbol/uint8_t" machineGenerated="true" --><span class="type">uint8_t</span><!-- /a --> <!-- a logicalPath="//apple_ref/c/econst/ack_id //apple_ref/c/data/ack_id //apple_ref/c/clconst/ack_id " machineGenerated="true" --><span class="var">ack_id</span><!-- /a -->; 
+    <!-- a logicalPath="//apple_ref/c/cl/char //apple_ref/c/tdef/char //apple_ref/c/tag/char //apple_ref/c/struct/char //apple_ref/c/intf/char //apple_ref/doc/anysymbol/char" machineGenerated="true" --><span class="type">char</span><!-- /a --> <span class="type">*</span><!-- a logicalPath="//apple_ref/c/econst/data_ptr //apple_ref/c/data/data_ptr //apple_ref/c/clconst/data_ptr " machineGenerated="true" --><span class="var">data_ptr</span><!-- /a -->; 
+};  <!-- headerDoc=declaration;uid=//apple_ref/c/tag/mailbox;name=end --></pre>
 </div>
 <h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Fields</font></h5>
 <div class='param_indent'>
 <dl>
-<dt><!-- headerDoc=structfield;  uid=//apple_ref/doc/structfield/message/message_identifier;   name=message_identifier -->
-<a name="//apple_ref/doc/structfield/message/message_identifier"></a>
+<dt><!-- headerDoc=structfield;  uid=//apple_ref/doc/structfield/mailbox/message_identifier;   name=message_identifier -->
+<a name="//apple_ref/doc/structfield/mailbox/message_identifier"></a>
 <code>message_identifier</code></dt><dd><p>id of the frame</dd>
-<dt><!-- headerDoc=structfield;  uid=//apple_ref/doc/structfield/message/message_data;   name=message_data -->
-<a name="//apple_ref/doc/structfield/message/message_data"></a>
-<code>message_data</code></dt><dd><p>holds the recived data or commands</dd>
+<dt><!-- headerDoc=structfield;  uid=//apple_ref/doc/structfield/mailbox/data_ptr;   name=data_ptr -->
+<a name="//apple_ref/doc/structfield/mailbox/data_ptr"></a>
+<code>data_ptr</code></dt><dd><p>points to the buffer array where starts the partcular message</dd>
 </dl>
 </div>
 <p class="gapBeforeFooter">&nbsp;</p><hr class="afterFooter"><div class="hd_copyright_and_timestamp">
-<p class="hd_timestamp">Last Updated: Hétfő, Augusztus 31, 2015
+<p class="hd_timestamp">Last Updated: Csütörtök, Szeptember 10, 2015
 </p></div>
 </td></tr></table>
 </body></html>

@@ -60,7 +60,7 @@ uint32_t parse(uint8_t *buffer,struct mailbox *ptr)
     return is_valid_message;
 }
 
-uint32_t send_message(uint32_t fd, uint32_t type, uint8_t *buffer,struct mailbox *ptr)
+uint32_t send_message(uint32_t fd, uint8_t *buffer,struct mailbox *ptr)
 {
     uint32_t i;
     
@@ -85,51 +85,16 @@ void flush_buffer(uint8_t *buffer )
         buffer[strln]=0;
 }
 
-
-
 void flush_mailboxes(struct mailbox *ptr)
 {
     struct mailbox blank;                                                   /* declare a blank structure which will be the pattern  */
-    uint32_t i=0;
+    uint32_t mailbox_index=0;
     
-    blank.message_type=0;                                                   /* the two elements of the structure will be equal to zero   */
+    blank.message_type=0;                                                   
+    blank.data_ptr=NULL;
     
-        
-        blank.data_ptr="uzenet";
-    
-    for(i=0;i<number_of_mailboxes;i++) *(ptr+i)=blank;                       /* copy the pattern structure to the array which n number of structure in it  */
+    for(;mailbox_index<number_of_mailboxes;mailbox_index++) *(ptr+mailbox_index)=blank;                       /* copy the pattern structure to the array which n number of structure in it  */
 }
-
-
-void print_mailboxes(struct mailbox *ptr)
-{
-    uint32_t i=0;
-    
-    for(;i<number_of_mailboxes;i++)
-    {
-       if(ptr[i].message_type!=0)   // only prints the mailboxes which holds a message
-       {
-           
-           printf("mailbox%d:\n\r",i);
-           if(request==ptr[i].message_type)printf("request id:%d\r\n",ptr[i].ack_id);
-           
-            else
-            {
-                printf("data id:%d message:",ptr[i].ack_id);
-                char *temp=ptr[i].data_ptr;
-                
-                while(!(*temp==end_of_frame))
-                printf("%c",*temp++);
-                
-               
-            }
-        printf("\n\r");
-       }
-
-    }
-    
-}
-
 
 uint32_t buffer_writing(uint8_t *buffer,struct mailbox *ptr )
 {
@@ -160,6 +125,69 @@ uint32_t buffer_writing(uint8_t *buffer,struct mailbox *ptr )
         
     }
     return  buffer_index;
+}
+
+void request_execute(struct mailbox *ptr)
+{
+    uint32_t mailbox_index=0;
+    
+    for(;mailbox_index<number_of_mailboxes;mailbox_index++)
+    {
+       if(ptr[mailbox_index].message_type==request)
+       {
+           switch(ptr[mailbox_index].ack_id)
+           {
+                case request_id_time:break;
+                case request_id_date:printf("succes\n\r");break;
+                case request_id_acc:break;
+                case request_id_mag:break;
+                case request_id_gyro:break;
+                case request_id_heading:break;
+                case request_id_temp:break;
+                case request_id_coordinates:break;
+                case request_id_altitude:printf("succes\n\r");break;
+                case request_id_set_gpio:break;
+                case request_id_obd:break;
+                case request_id_CAN_filter:break;
+           
+           
+           }
+       }
+    
+    }
+    
+
+}
+
+
+
+void print_mailboxes(struct mailbox *ptr)
+{
+    uint32_t mailbox_index=0;
+    
+    for(;mailbox_index<number_of_mailboxes;mailbox_index++)
+    {
+        if(ptr[mailbox_index].message_type!=0)   // only prints the mailboxes which holds a message
+        {
+            
+            printf("mailbox%d:\n\r",mailbox_index);
+            if(request==ptr[mailbox_index].message_type)printf("request id:%d\r\n",ptr[mailbox_index].ack_id);
+            
+            else
+            {
+                printf("data id:%d message:",ptr[mailbox_index].ack_id);
+                char *temp=ptr[mailbox_index].data_ptr;
+                
+                while(!(*temp==end_of_frame))
+                    printf("%c",*temp++);
+                
+                
+            }
+            printf("\n\r");
+        }
+        
+    }
+    
 }
 
 
