@@ -52,7 +52,7 @@ int main(void)
     
     buffer_writing(txbuffer, tx_mailbox);
     
-    for(i; i<buffer_size;i++)printf("tx:%c\n\r",txbuffer[i]);
+    for(; i<buffer_size;i++)printf("tx:%c\n\r",txbuffer[i]);
     printf("\n\r");
         return 0;
 
