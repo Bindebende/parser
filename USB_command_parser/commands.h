@@ -53,18 +53,6 @@ struct mailbox{
 };
 
 
-
-/*!
- @struct can_message
- @abstract holds one recived can frame
- @field message_identifier id of the frame
- @field message the message
- */
-struct can_message{
-    uint64_t message_identifier;
-    uint64_t message;
-};
-
 /*!
  *
  *  @function parse
