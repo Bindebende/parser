@@ -23,7 +23,7 @@ uint32_t parse(uint8_t *buffer,struct mailbox *ptr)
         if (buffer[sof_index]==start_of_frame)                                                  /* looking for start of frame character                                                 */
         {
             for(eof_index=sof_index; eof_index<buffer_size;eof_index++ )                        /* iterating through the buffer                                                         */
-            {
+            {    
                 if ((buffer[eof_index]==end_of_frame)&&(eof_index>sof_index))                   /* looking for end of frame character                                                   */
                 {
                     is_valid_message=1;                                                         /* means we have a message                                                              */
